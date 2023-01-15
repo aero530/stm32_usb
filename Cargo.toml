@@ -1,0 +1,27 @@
+[package]
+name = "stm32usb"
+version = "0.1.0"
+edition = "2021"
+resolver = "2"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.release]
+opt-level = 'z' # turn on maximum optimizations. We only have 64kB
+lto = true      # Link-time-optimizations for further size reduction
+
+[dependencies]
+cortex-m = "0.7.7"
+cortex-m-rt = { version = "0.7.2", features = ["device"] }
+
+panic-semihosting = "0.6.0"
+usb-device = "0.2.9"
+usbd-serial = "0.1.1"
+
+# [dependencies.stm32f7xx-hal]
+# version = "0.7.0"
+# features = ["stm32f746", "rt"]
+
+[dependencies.stm32f3xx-hal]
+version = "0.9.1"
+features = ["ld", "rt", "usb", "stm32f303xe"]

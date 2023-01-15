@@ -1,0 +1,17 @@
+# .cargo/config
+
+# Use thumbv6m-none-eabi for ARM Cortex-M0 and Cortex-M0+
+# Use thumbv7m-none-eabi for ARM Cortex-M3
+# Use thumbv7em-none-eabi for ARM Cortex-M4 and Cortex-M7 (no FPU support)
+# Use thumbv7em-none-eabihf for ARM Cortex-M4F and Cortex-M7F (with FPU support)
+
+[target.thumbv7em-none-eabi]
+# runner = "arm-none-eabi-gdb -q"
+
+# use the Tlink.x scrip from the cortex-m-rt crate
+rustflags = [
+  "-C", "link-arg=-Tlink.x",
+]
+
+[build]
+target = "thumbv7em-none-eabi"
